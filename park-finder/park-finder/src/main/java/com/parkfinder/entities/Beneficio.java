@@ -3,7 +3,7 @@ package com.parkfinder.entities;
 import java.time.LocalDate;
 
 public class Beneficio {
-    //puto
+    
     private Long idBeneficio;
     private int usosAcumulados;
     private Boolean beneficioDisponible;
