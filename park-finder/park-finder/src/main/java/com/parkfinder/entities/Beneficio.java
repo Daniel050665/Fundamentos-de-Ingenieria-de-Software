@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 public class Beneficio {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBeneficio;
 
     private int usosAcumulados;
