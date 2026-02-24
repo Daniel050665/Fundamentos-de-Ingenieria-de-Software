@@ -1,10 +1,15 @@
 package com.parkfinder.entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tipo_vehiculo")
 public class TipoVehiculo {
 
+    @Id
     private int idTipoVehiculo;
     private String nombre;
-    
+
     public TipoVehiculo() {
     }
 
@@ -28,5 +33,5 @@ public class TipoVehiculo {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
 }

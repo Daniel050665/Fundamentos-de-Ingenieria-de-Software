@@ -1,14 +1,22 @@
 package com.parkfinder.entities;
 
 import java.time.LocalDate;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "suscripciones")
 public class Suscripcion {
 
+    @Id
     private Long idSuscripcion;
+
     private String tipoPlan;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private Boolean estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     public Suscripcion() {

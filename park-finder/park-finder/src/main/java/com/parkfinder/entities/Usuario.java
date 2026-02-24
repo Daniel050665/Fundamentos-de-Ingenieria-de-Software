@@ -1,15 +1,25 @@
 package com.parkfinder.entities;
 
 import java.time.LocalDate;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
-
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
+
     private String nombre;
     private String correo;
     private String contraseña;
     private String placaVehiculo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_vehiculo")
     private TipoVehiculo tipoVehiculo;
+
     private LocalDate fechaRegistro;
     private Boolean estadoCuenta;
     private Integer usosAcumulados;

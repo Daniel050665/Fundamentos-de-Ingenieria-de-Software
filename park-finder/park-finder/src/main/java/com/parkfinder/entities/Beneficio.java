@@ -1,14 +1,22 @@
 package com.parkfinder.entities;
 
 import java.time.LocalDate;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "beneficios")
 public class Beneficio {
-    //puto
+
+    @Id
     private Long idBeneficio;
+
     private int usosAcumulados;
     private Boolean beneficioDisponible;
     private LocalDate fechaGeneracion;
     private LocalDate fechaUso;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     public Beneficio() {
@@ -70,5 +78,4 @@ public class Beneficio {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
 }

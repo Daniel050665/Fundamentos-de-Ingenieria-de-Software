@@ -1,19 +1,35 @@
 package com.parkfinder.entities;
 
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
 import com.parkfinder.enums.EstadoReserva;
 
-import java.time.LocalDateTime;
-
+@Entity
+@Table(name = "reservas")
 public class Reserva {
 
+    @Id
     private Long idReserva;
+
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
     private Integer tiempoEstimadoHoras;
+
+    @Enumerated(EnumType.STRING)
     private EstadoReserva estado;
+
     private Boolean beneficioAplicado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cupo")
     private Cupo cupo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_parqueadero")
     private Parqueadero parqueadero;
 
     public Reserva() {
@@ -77,30 +93,6 @@ public class Reserva {
 
     public void setBeneficioAplicado(Boolean beneficioAplicado) {
         this.beneficioAplicado = beneficioAplicado;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Cupo getCupo() {
-        return cupo;
-    }
-
-    public void setCupo(Cupo cupo) {
-        this.cupo = cupo;
-    }
-
-    public Parqueadero getParqueadero() {
-        return parqueadero;
-    }
-
-    public void setParqueadero(Parqueadero parqueadero) {
-        this.parqueadero = parqueadero;
     }
     
 }

@@ -1,10 +1,16 @@
 package com.parkfinder.entities;
 
 import java.time.LocalTime;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "parqueaderos")
 public class Parqueadero {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idParqueadero;
+
     private String nombre;
     private String direccion;
     private String zona;

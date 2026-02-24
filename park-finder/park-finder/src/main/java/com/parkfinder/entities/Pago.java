@@ -1,19 +1,34 @@
 package com.parkfinder.entities;
 
+import java.time.LocalDate;
+import jakarta.persistence.*;
 import com.parkfinder.enums.EstadoPago;
 import com.parkfinder.enums.TipoPago;
 
-import java.time.LocalDate;
-
+@Entity
+@Table(name = "pagos")
 public class Pago {
 
+    @Id
     private Long idPago;
+
+    @Enumerated(EnumType.STRING)
     private TipoPago tipoPago;
+
     private double monto;
     private LocalDate fechaPago;
+
+    @Enumerated(EnumType.STRING)
     private EstadoPago estadoPago;
+
     private String metodoPago;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "id_reserva")
     private Reserva reserva;
 
     public Pago() {
@@ -93,5 +108,5 @@ public class Pago {
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
     }
-    
+
 }

@@ -1,13 +1,26 @@
 package com.parkfinder.entities;
 
+import jakarta.persistence.*;
 import com.parkfinder.enums.EstadoCupo;
 
+@Entity
+@Table(name = "cupos")
 public class Cupo {
-    
+
+    @Id
     private Long idCupo;
+
     private Integer numeroCupo;
+
+    @Enumerated(EnumType.STRING)
     private EstadoCupo estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_vehiculo")
     private TipoVehiculo tipoVehiculoPermitido;
+
+    @ManyToOne
+    @JoinColumn(name = "id_parqueadero")
     private Parqueadero parqueadero;
 
     public Cupo() {
@@ -20,7 +33,7 @@ public class Cupo {
         this.tipoVehiculoPermitido = tipoVehiculoPermitido;
         this.parqueadero = parqueadero;
     }
-
+    
     public Long getIdCupo() {
         return idCupo;
     }
@@ -60,5 +73,4 @@ public class Cupo {
     public void setParqueadero(Parqueadero parqueadero) {
         this.parqueadero = parqueadero;
     }
-
 }
